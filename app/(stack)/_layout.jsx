@@ -4,7 +4,8 @@ const _layout = () => {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ title: "Home" }} />
-      <Stack.Screen name="Page2" />
+      <Stack.Screen name="productos" options={{ title: "Productos Categoria" }} />
+      <Stack.Screen name="productosCategoria" options={{title:"Productos Categoria"}}/>
       <Stack.Screen name="Details"/>
     </Stack>
   );

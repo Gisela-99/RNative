@@ -17,6 +17,7 @@ const Page1 = () => {
         renderItem={({item})=>(
           <Pressable 
             onPress={()=>router.push(`/productos/${item.id}`)}
+            //onPress={()=>router.push(`/productosCategoria/${item.id}`)}
             style={[styles.cuadro, {backgroundColor:item.color}]}>
             <Text style={styles.itemText}>{item.name}</Text>
           </Pressable>

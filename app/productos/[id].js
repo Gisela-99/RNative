@@ -1,45 +1,97 @@
-import { View, Text, FlatList, } from "react-native-web";
-import { useLocalSearchParams } from "expo-router";
+import {  Text, StyleSheet, ScrollView, Pressable } from "react-native-web";
 import { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
+
+const ListaProductos = () => {
+  const [productos, setProductos] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then(res => res.json())
+      .then(data => setProductos(data))
+      .catch(err => console.error(err));
+  }, []);
+
+  return (
+    <ScrollView style={styles.container}>
+      {productos.map(producto => (
+        <Pressable 
+          key={producto.id} 
+          style={styles.card} 
+          //onPress={() => router.push(`/details/${producto.id}`)}
+           onPress={() => router.push(`/Details?id=${producto.id}`)}
+        >
+          <Text style={styles.title}>{producto.title}</Text>
+          <Text>Precio: {producto.price} $</Text>
+        </Pressable>
+      ))}
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+  card: {
+    marginBottom: 20,
+    backgroundColor: "#cccccc",
+    padding: 15,
+    borderRadius: 10,
+  },
+  title: {
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+});
+
+export default ListaProductos;
 
 
-const Productos = ()=>{
-  const {id} = useLocalSearchParams()
-  const [productos, setProductos] = useState ([])
+// import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native-web";
+// import { useEffect, useState } from "react";
+// import { useRouter } from "expo-router";
 
-  // useEffect(()=>{
-  //   const fetchProductos = async ()=>{
-  //       try{
-        
-  //         setProductos(data)
-  //       }catch (error){
-  //         console.log("Error al cargar productos",error)
-  //       }
-  //   }
-    
-  //   if(id) fetchProductos()
-  // },[id])
+// const ListaProductos = () => {
+//   const [productos, setProductos] = useState([]);
+//   const router = useRouter();
 
+//   useEffect(() => {
+//     fetch("https://fakestoreapi.com/products")
+//       .then(res => res.json())
+//       .then(data => setProductos(data))
+//       .catch(err => console.error(err));
+//   }, []);
 
-  return(
-    <View>
-      <Text>Productos de la categoria {id}</Text>
-
-      <FlatList 
-        data={productos}
-        keyExtractor={(item)=>item.id}
-
-        renderItem={({item})=>(
-          <View>
-            <Text>{item.nombre}</Text>
+//   return (
+//     <ScrollView style={styles.container}>
+//       {productos.map(producto => (
+//         <View key={producto.id} style={styles.card} >
+//           <Text style={styles.title}>{producto.title}</Text>
+//           <Text>Precio: ${producto.price}</Text>
           
-          </View>
-        )}
-      />
+//         </View>
+//       ))}
+//     </ScrollView>
+//   );
+// };
 
-      
-    </View>
-  )
-}
+// const styles = StyleSheet.create({
+//   container: {
+//     padding: 20,
+//   },
+//   card: {
+//     marginBottom: 20,
+//     backgroundColor: "#cccccc",
+//     padding: 15,
+//     borderRadius: 10,
+//   },
+//   title: {
+//     fontWeight: "bold",
+//     marginBottom: 5,
+//   },
 
-export default Productos
+// });
+
+// export default ListaProductos;

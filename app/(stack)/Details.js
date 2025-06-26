@@ -64,13 +64,14 @@ const  Details= () => {
 };
 const styles = StyleSheet.create({
  boton: {
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     backgroundColor: "#2e86de",
     color: "#fff",
     marginTop: 20,
     textAlign: "center",
     borderRadius: 5,
-    with:50,
+    alignSelf: "flex-start",
   },
 })
 

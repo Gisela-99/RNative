@@ -5,8 +5,8 @@ const _layout = () => {
     <Stack>
       <Stack.Screen name="index" options={{ title: "Home" }} />
       <Stack.Screen name="productos" options={{ title: "Productos Categoria" }} />
-      <Stack.Screen name="productosCategoria" options={{title:"Productos Categoria"}}/>
-      <Stack.Screen name="Details"/>
+      {/* <Stack.Screen name="productosCategoria" options={{title:"Productos Categoria"}}/> */}
+      <Stack.Screen name="Details" options={{ title: "Productos Categoria" }} />
     </Stack>
   );
 };

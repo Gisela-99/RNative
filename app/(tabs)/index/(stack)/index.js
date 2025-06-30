@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { FlatList, Pressable } from "react-native";
-import { CATEGORIES } from "../data/categories";
+import { CATEGORIES } from "../../../data/categories";
 
 
 const Page1 = () => {
@@ -31,7 +31,6 @@ const Page1 = () => {
 const styles = StyleSheet.create({
   cuadro: {
       flex: 1,
-      // cuadrado perfecto
       justifyContent: "center",
       alignItems: "center",
       padding:30,

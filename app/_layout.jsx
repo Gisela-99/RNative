@@ -1,11 +1,14 @@
 import { Stack } from "expo-router";
+import { CartProvider } from "./(tabs)/Cart";
 
 const _layout = () => {
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="(stack)" options={{ headerShown: false }} />
-    </Stack>
+    <CartProvider>
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(stack)" options={{ headerShown: false }} />
+      </Stack>
+    </CartProvider>
   );
 };
 
